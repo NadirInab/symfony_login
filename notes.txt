@@ -1,7 +1,10 @@
-Today, with the help of 
-- FOSRestBundle which is  Symfony bundle that provides additional functionality and tools for building RESTful APIs 
-of I created a mini rest api 
+Today, I wreated a simple Rest Api with the help of :
+- FOSRestBundle which is  Symfony bundle that provides additional functionality and tools for building RESTful APIs .
+- Created a user entity (name, email,age ,password) => made migrations .
+- The use is :
+    - Created => POST
+    - Fetched => GET
+    - Updated => PUT
+    - Deleted => DELETE 
 
-
-api testing with postman .
-testing 
+Api testing with postman .
