@@ -22,7 +22,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/store', name:'store', methods:['POST'])]
+    #[Route('/store', name:'user_store', methods:['POST'])]
     public function store(Request $request, EntityManagerInterface $em): JsonResponse
     {   
         $data = $request->request->all() ;
@@ -37,6 +37,58 @@ class UserController extends AbstractController
         $user->setPassword($password) ;
         $user->setAge($age) ;
         $em->persist($user) ;
+        $em->flush() ;
+        return new JsonResponse([
+            "user" => $user
+        ]) ;
+    }
+
+    #[Route('/show/{id}', name:"user_show", methods:['GET'])]
+    public function show(int $id, EntityManagerInterface $em): JsonResponse 
+    {
+        $user = $em->getRepository(User::class)->find($id);
+        if(!$user){
+            return $this->json("No user is found for id".$id, 404) ;
+        }
+        $data = [
+            "id" => $user->getId() ,
+            "name" => $user->getEmail(),
+            "age" => $user->getAge(),
+            "password" => $user->getPassword()
+        ] ;
+
+        return new JsonResponse([
+            "user" => $data
+        ]) ;
+    }
+
+
+    #[Route('edit/{id}', name:'edit_user', methods:['PUT'])]
+    public function edit(Request $request,int $id, EntityManagerInterface $em): JsonResponse
+    {
+        $user = $em->getRepository(User::class)->find($id);
+        if(!$user){
+            return $this->json("No User found for id :".$id, 404) ;
+        }
+        $user->setName($request->request->get('name')) ;
+        $user->setEmail($request->request->get('email')) ;
+        $user->setAge($request->request->get('age')) ;
+        $user->setPassword($request->request->get('password')) ;
+        $em->flush() ;
+
+        return new JsonResponse([
+            "user" => $user
+        ]) ;
+    }
+
+    #[Route('user/{id}', name:'user_delete', methods:['DELETE'])]
+    public function delete(int $id,EntityManagerInterface $em): JsonResponse
+    {
+        $user = $em->getRepository(User::class)->find($id) ;
+        if(!$user){
+            return $this->json("No user found for id :".$id, 404) ;
+        } ;
+        $em->remove($user) ;
         $em->flush() ;
         return new JsonResponse([
             "user" => $user
