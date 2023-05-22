@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
+// use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+
+#[Entity(repositoryClass: UserRepository::class)]
 class User
 {
     #[ORM\Id]

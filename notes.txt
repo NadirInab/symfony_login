@@ -1,0 +1,7 @@
+Today, with the help of 
+- FOSRestBundle which is  Symfony bundle that provides additional functionality and tools for building RESTful APIs 
+of I created a mini rest api 
+
+
+api testing with postman .
+testing 
