@@ -37,7 +37,6 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
-    security:
         password_hashers:
             # By default, password hashers are resource intensive and take time. This is
             # important to generate secure password hashes. In tests however, secure hashes
