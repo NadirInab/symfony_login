@@ -1,11 +1,1 @@
-Today, I created a simple Rest Api with the help of :
-- FOSRestBundle which is  Symfony bundle that provides additional functionality and tools for building RESTful APIs .
-- Created a user entity (name, email,age ,password) => made migrations .
-- The user is :
-    - Created => POST
-    - Fetched => GET
-    - Updated => PUT
-    - Deleted => DELETE 
-- Api testing with postman .
-- Github Repo : https://github.com/NadirInab/symfony_rest_api
-     Branches : master && developer 
+
