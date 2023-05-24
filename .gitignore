@@ -7,6 +7,6 @@
 /public/bundles/
 /var/
 /vendor/
-/.env
 *.txt
+.env
 ###< symfony/framework-bundle ###
